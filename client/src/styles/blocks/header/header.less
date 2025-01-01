@@ -1,0 +1,50 @@
+// main: "../../main.less"
+@import "../../vars";
+
+.header_wrapper {
+  height: 55px;
+}
+
+.header {
+  position: fixed;
+  background: @color-background-modal;
+  width: 100%;
+  height: 55px;
+  display: flex;
+  padding: 0 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_content {
+  display: flex;
+  align-items: center;
+  .header_content_last_item {
+    margin-left: 20px;
+  }
+}
+
+.header_message_delete {
+  display: flex;
+  align-items: center;
+  .header_message_delete_text {
+    color: #ff4242;
+  }
+}
+
+.header_search {
+  input {
+    border: 0;
+    width: 300px;
+    height: 44px;
+    border-radius: 25px;
+    background: #29333d;
+    padding-left: 15px;
+    padding-right: 45px;
+  }
+  img {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+  }
+}

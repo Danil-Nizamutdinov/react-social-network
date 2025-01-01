@@ -1,0 +1,60 @@
+// main: "../../main.less"
+@import "../../vars";
+
+.channel_video_popup {
+  width: 100%;
+  height: 100%;
+
+  position: fixed;
+  background: @color-background-modal;
+  overflow-x: auto;
+}
+
+.channel_video_popup_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #212932;
+  padding: 15px;
+}
+
+.channel_video_popup_form {
+  padding: 15px;
+}
+
+.channel_video_popup_form_item {
+  margin-bottom: 15px;
+}
+
+.file_input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px dashed #3d4a58;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.channel_video_label {
+  display: block;
+  margin-bottom: 7px;
+}
+
+.channel_video_textarea {
+  border: 1px solid #3d4a58;
+  border-radius: 7px;
+  background: #1c232b;
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 5px;
+
+  height: 8rem;
+  resize: none;
+  width: 100%;
+  padding: 7px 10px;
+}
+
+.channel_video_canel {
+  margin-right: 15px;
+}
