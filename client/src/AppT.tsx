@@ -5,10 +5,14 @@ import { useAppDispatch, useAppSelector } from "./hooks/redux";
 import { checkAuth } from "./store/reducers/ActionCreators/UserAC";
 import Loading from "./components/Helper/Loading";
 import Modals from "./components/Modal/Modals";
+import HeaderMenu from "./components/Modal/MenuModal/HeaderMenu";
+import useWindowWidth, { mobile } from "./hooks/useWindowWidth";
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector((state) => state.userSlice.isLoading);
+
+  const isDesctop = mobile < useWindowWidth();
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -24,7 +28,16 @@ const App: React.FC = () => {
     <div className="">
       <Header />
       <Modals />
-      <Outlet />
+      <div className={isDesctop ? "appt_content" : ""}>
+        {isDesctop && (
+          <div className="header_menu_box">
+            <HeaderMenu />
+          </div>
+        )}
+        <div>
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 };

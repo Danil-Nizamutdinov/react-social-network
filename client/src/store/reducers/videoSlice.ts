@@ -12,6 +12,7 @@ import {
   getReactions,
   getVideo,
   getVideos,
+  getVideosNextPage,
 } from "./ActionCreators/VideoAC";
 
 const initialState: VideoState = {
@@ -20,6 +21,8 @@ const initialState: VideoState = {
   comments: null,
   emotion: "",
   commentReactions: [],
+  page: 1,
+  totalPages: null,
 };
 
 export const videoSlice = createSlice({
@@ -29,8 +32,18 @@ export const videoSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(
       getVideos.fulfilled,
-      (state, action: PayloadAction<Video[]>) => {
-        state.video = action.payload;
+      (state, action: PayloadAction<VideoResponse>) => {
+        state.video = action.payload.videos;
+        state.page = action.payload.page;
+        state.totalPages = action.payload.totalPages;
+      }
+    );
+    builder.addCase(
+      getVideosNextPage.fulfilled,
+      (state, action: PayloadAction<VideoResponse>) => {
+        state.video = state.video.concat(action.payload.videos);
+        state.page = action.payload.page;
+        state.totalPages = action.payload.totalPages;
       }
     );
     builder.addCase(

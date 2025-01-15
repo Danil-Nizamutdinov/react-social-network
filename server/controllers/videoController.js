@@ -37,6 +37,7 @@ class VideoController {
   async getVideos(req, res, next) {
     try {
       let { page, limit } = req.query;
+
       const videos = await videoService.getVideos(page, limit);
       return res.json(videos);
     } catch (e) {

@@ -19,5 +19,4 @@ const useWindowWidth = () => {
 };
 
 export const mobile = 768;
-
 export default useWindowWidth;

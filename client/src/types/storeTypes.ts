@@ -19,6 +19,8 @@ export interface VideoState {
   comments: Comment[];
   emotion: string;
   commentReactions: commentReaction[];
+  page: number;
+  totalPages: number;
 }
 
 export interface ChannelState {

@@ -5,13 +5,27 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  position: relative;
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    background: rgba(148, 148, 148, 0.5);
+  }
 }
 
 .messages_list {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 40px;
+  height: calc(100vh - 110px);
+  @media screen and (@mobile) {
+    height: calc(100vh - 165px);
+  }
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .message_active {
@@ -28,4 +42,7 @@
   margin-bottom: 15px;
   border-radius: 7px;
   max-width: 70%;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }

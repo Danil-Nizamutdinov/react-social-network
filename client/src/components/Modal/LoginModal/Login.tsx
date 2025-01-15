@@ -13,7 +13,7 @@ const Login: React.FC = () => {
       <img
         src={cross}
         alt="close"
-        className="login_cross"
+        className="login_cross cursor_pointer"
         onClick={() => dispatch(toggle(ActiveToggle.LOGIN))}
       />
       <div className="login_content">

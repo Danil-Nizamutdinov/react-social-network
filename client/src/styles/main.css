@@ -74,6 +74,10 @@
   justify-content: space-between;
   align-items: center;
 }
+.header_message {
+  position: absolute;
+  border-top: 2px solid #424242;
+}
 .header_content {
   display: flex;
   align-items: center;
@@ -88,19 +92,28 @@
 .header_message_delete .header_message_delete_text {
   color: #ff4242;
 }
+.header_search {
+  position: relative;
+}
 .header_search input {
   border: 0;
   width: 300px;
   height: 44px;
-  border-radius: 25px;
+  border-radius: 7px;
   background: #29333d;
   padding-left: 15px;
   padding-right: 45px;
 }
+@media screen and ((min-width: 768px)) {
+  .header_search input {
+    width: 400px;
+  }
+}
 .header_search img {
   position: absolute;
-  top: 15px;
-  right: 25px;
+  top: 8px;
+  right: 15px;
+  cursor: pointer;
 }
 .modal {
   position: fixed;
@@ -156,11 +169,14 @@
 .profile_menu span {
   display: block;
   margin-top: 20px;
+  cursor: pointer;
 }
 .header_menu {
+  position: fixed;
   width: 242px;
   height: 100%;
-  background-color: #1c232b;
+  border-right: 2px solid #424242;
+  background: #1c232b;
 }
 .nav {
   padding: 10px 15px;
@@ -183,6 +199,17 @@
   position: fixed;
   overflow-x: auto;
   background: #29333d;
+  padding-bottom: 100px;
+}
+@media screen and ((min-width: 768px)) {
+  .login {
+    width: 375px;
+    height: auto;
+    border-radius: 7px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 .login_cross {
   position: absolute;
@@ -235,6 +262,17 @@
 .video {
   width: 100%;
   background: #1c232b;
+}
+.player-wrapper {
+  width: auto;
+  height: auto;
+}
+.react-player {
+  padding-top: 56.25%;
+  position: relative;
+}
+.react-player > div {
+  position: absolute;
 }
 .video_content {
   border-bottom: 1px solid #29333d;
@@ -368,8 +406,13 @@
 }
 .video_list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+@media screen and ((min-width: 768px)) {
+  .video_list {
+    justify-content: space-between;
+  }
 }
 .video_item {
   margin-bottom: 18px;
@@ -419,11 +462,6 @@
   width: 100%;
   background: #1c232b;
 }
-.channel_background_img img {
-  width: 100%;
-  height: 147px;
-  border-radius: 7px;
-}
 .channel_box {
   padding: 20px 15px;
 }
@@ -453,6 +491,16 @@
   position: fixed;
   background: #1c232b;
   overflow-x: auto;
+}
+@media screen and ((min-width: 768px)) {
+  .channel_video_popup {
+    width: 375px;
+    height: auto;
+    border-radius: 7px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 .channel_video_popup_header {
   display: flex;
@@ -525,12 +573,28 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  position: relative;
+}
+.message_wrapper ::-webkit-scrollbar {
+  width: 5px;
+}
+.message_wrapper ::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background: rgba(148, 148, 148, 0.5);
 }
 .messages_list {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 40px;
+  height: calc(100vh - 110px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+}
+@media screen and ((min-width: 768px)) {
+  .messages_list {
+    height: calc(100vh - 165px);
+  }
 }
 .message_active {
   align-self: flex-end;
@@ -545,11 +609,15 @@
   border-radius: 7px;
   max-width: 70%;
 }
+.message_box:last-child {
+  margin-bottom: 0;
+}
 .chat_box {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 15px;
+  text-decoration: none;
 }
 .chat_box:last-child {
   font-size: 12px;
@@ -569,9 +637,9 @@
   margin-top: 5px;
 }
 .message_send {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  position: absolute;
+  bottom: -55px;
+  right: 0;
   width: 100%;
   height: 55px;
   padding: 15px;
@@ -595,9 +663,8 @@
   margin-left: 10px;
 }
 .absence {
-  display: flex;
-  justify-content: center;
-  min-height: 200px;
+  width: 100%;
+  margin-top: 50px;
 }
 .absence_box {
   display: flex;
@@ -639,7 +706,14 @@ img {
 .ava {
   width: 26px;
   height: 26px;
+  cursor: pointer;
   border-radius: 50%;
+}
+@media screen and ((min-width: 768px)) {
+  .ava {
+    width: 40px;
+    height: 40px;
+  }
 }
 .ava_profile {
   width: 56px;
@@ -659,6 +733,7 @@ img {
   color: #00a1e7;
   border-radius: 7px;
   font-size: 11px;
+  cursor: pointer;
 }
 .button_all_blue {
   background: #00a1e7;
@@ -668,7 +743,22 @@ img {
   color: #fff;
   border-radius: 7px;
   font-size: 11px;
+  cursor: pointer;
 }
 .dislike {
   width: 22px;
+  cursor: pointer;
+}
+.like {
+  cursor: pointer;
+}
+.cursor_pointer {
+  cursor: pointer;
+}
+.appt_content {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+}
+.header_menu_box {
+  min-width: 242px;
 }

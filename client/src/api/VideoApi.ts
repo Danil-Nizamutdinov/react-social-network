@@ -6,9 +6,9 @@ const VideoApi = {
   async getVideos(
     page?: number,
     limit?: number
-  ): Promise<AxiosResponse<Video[]>> {
+  ): Promise<AxiosResponse<VideoResponse>> {
     try {
-      return apiDefault.get<Video[]>("/video/videos", {
+      return apiDefault.get<VideoResponse>("/video/videos", {
         params: { page, limit },
       });
     } catch (error) {

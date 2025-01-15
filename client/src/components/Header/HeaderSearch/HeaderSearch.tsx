@@ -5,6 +5,8 @@ import { useAppDispatch } from "@src/hooks/redux";
 import { toggle } from "@reducers/toggleSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ActiveToggle } from "@src/types/main";
+import useWindowWidth, { mobile } from "@src/hooks/useWindowWidth";
+import useWindowHeight from "@src/hooks/useWindowHeight";
 
 const HeaderSearch: React.FC = () => {
   const [text, setText] = useState<string>("");
@@ -13,9 +15,11 @@ const HeaderSearch: React.FC = () => {
   const currentPage: string = pathname.split("/")[1];
 
   const navigate = useNavigate();
+  const isDesctop = mobile < useWindowWidth();
 
   const search = () => {
-    dispatch(toggle(ActiveToggle.SEARCH));
+    if (!isDesctop) dispatch(toggle(ActiveToggle.SEARCH));
+    setText("");
     switch (currentPage) {
       case "video":
         return navigate("video");
@@ -32,11 +36,14 @@ const HeaderSearch: React.FC = () => {
 
   return (
     <>
-      <img
-        src={arrow}
-        alt="arrow"
-        onClick={() => dispatch(toggle(ActiveToggle.SEARCH))}
-      />
+      {!isDesctop && (
+        <img
+          src={arrow}
+          alt="arrow"
+          onClick={() => dispatch(toggle(ActiveToggle.SEARCH))}
+        />
+      )}
+
       <div className="header_search">
         <input
           type="text"

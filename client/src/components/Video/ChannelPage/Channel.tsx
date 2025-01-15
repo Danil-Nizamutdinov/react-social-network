@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@src/hooks/redux";
 import { apiUrlStatic } from "@src/api";
@@ -6,8 +6,15 @@ import { toggle } from "@src/store/reducers/toggleSlice";
 import { getReaction } from "@src/store/reducers/ActionCreators/VideoAC";
 import { subscribe } from "@src/store/reducers/ActionCreators/ChannelAC";
 import { ActiveToggle } from "@src/types/main";
+import useWindowWidth from "@src/hooks/useWindowWidth";
+
+const mobile = 480;
+const tablet = 768;
+const desktop = 1024;
 
 const Channel: React.FC = () => {
+  const [height, setHeight] = useState<number>(147);
+
   const isSubscribe = useAppSelector((state) => state.channelSlice.isSubscribe);
   const currentChannel = useAppSelector(
     (state) => state.channelSlice.currentChannel
@@ -21,6 +28,24 @@ const Channel: React.FC = () => {
     dispatch(subscribe({ type: "channel", channelId: currentChannel.id }));
   };
 
+  const windowWidth = useWindowWidth();
+
+  const updateHeight = () => {
+    if (windowWidth <= mobile) {
+      setHeight(200);
+    } else if (windowWidth <= tablet) {
+      setHeight(300);
+    } else if (windowWidth <= desktop) {
+      setHeight(350);
+    } else {
+      setHeight(400);
+    }
+  };
+
+  useEffect(() => {
+    updateHeight();
+  }, [windowWidth]);
+
   useEffect(() => {
     if (user) {
       dispatch(getReaction({ type: "channel", contentId: currentChannel.id }));
@@ -29,9 +54,16 @@ const Channel: React.FC = () => {
 
   return (
     <div className="channel">
-      <div className="channel_background_img">
-        <img src={apiUrlStatic + currentChannel.background} alt="background" />
-      </div>
+      <div
+        className="channel_background_img"
+        style={{
+          backgroundImage: `url(${apiUrlStatic + currentChannel.background})`,
+          height: `${height}px`,
+          borderRadius: "7px",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      ></div>
       <div className="channel_box">
         <div className="channel_info">
           <div className="channel_info_item">

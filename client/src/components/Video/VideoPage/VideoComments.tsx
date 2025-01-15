@@ -55,7 +55,11 @@ const VideoComments: React.FC = () => {
       <div className="video_commetns">
         <div>{comments.length} комментариев</div>
         <div>
-          <img src={expandArrow} onClick={() => setIsUpDown(!isUpDown)} />
+          <img
+            src={expandArrow}
+            className="cursor_pointer"
+            onClick={() => setIsUpDown(!isUpDown)}
+          />
         </div>
       </div>
 

@@ -17,16 +17,16 @@ const Video: React.FC = () => {
   const dispatch = useAppDispatch();
   const { id } = useParams();
 
-  const handleClick = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  // const handleClick = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth",
+  //   });
+  // };
 
   useEffect(() => {
     dispatch(getVideo(Number(id)));
-    handleClick();
+    window.scrollTo(0, 0);
   }, [id]);
 
   return (

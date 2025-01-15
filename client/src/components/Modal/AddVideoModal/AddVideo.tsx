@@ -48,7 +48,7 @@ const AddVideo: React.FC = () => {
         <img
           src={cross}
           alt="close"
-          className="cahnel_cross"
+          className="cahnel_cross cursor_pointer"
           onClick={() => dispatch(toggleFalse())}
         />
       </div>

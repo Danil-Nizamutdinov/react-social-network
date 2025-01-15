@@ -63,9 +63,14 @@ const LoginForm: React.FC = () => {
         ) : (
           ""
         )}
-        <button className="login_button login_form_item">Продолжить</button>
+        <button className="login_button login_form_item cursor_pointer">
+          Продолжить
+        </button>
       </form>
-      <div className="reg" onClick={() => dispatch(toggleReg(!isReg))}>
+      <div
+        className="reg cursor_pointer"
+        onClick={() => dispatch(toggleReg(!isReg))}
+      >
         {isReg ? "Войти" : "Зарегистрироваться"}
       </div>
     </>

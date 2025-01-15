@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@src/hooks/redux";
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Absence from "../Helper/Absence";
 import { getChats } from "@src/store/reducers/ActionCreators/ChatAC";
 import { convertToReadableDate } from "../Helper/readableDate";
@@ -24,11 +24,7 @@ const Chats: React.FC = () => {
         <Absence />
       ) : (
         chats?.map((e: any) => (
-          <div
-            key={e.id}
-            className="chat_box"
-            onClick={() => navigate(`/chats/${e.id}`)}
-          >
+          <NavLink key={e.id} className="chat_box" to={`/chats/${e.id}`}>
             <div className="chat_box_item">
               <div>
                 <img
@@ -43,7 +39,7 @@ const Chats: React.FC = () => {
               </div>
             </div>
             <div className="chat_box">{convertToReadableDate(e.updatedAt)}</div>
-          </div>
+          </NavLink>
         ))
       )}
     </div>

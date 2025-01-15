@@ -29,7 +29,12 @@ const HeaderMessage: React.FC = () => {
 
   return (
     <>
-      <img src={arrow} alt="arrow" onClick={() => navigate(-1)} />
+      <img
+        src={arrow}
+        alt="arrow"
+        className="cursor_pointer"
+        onClick={() => navigate(-1)}
+      />
       <div className="header_content">
         <img
           src={apiUrlStatic + chat?.avatar}
@@ -38,7 +43,7 @@ const HeaderMessage: React.FC = () => {
         />
         <div className="header_content_last_item">{chat?.login}</div>
       </div>
-      <div className="header_message_delete" onClick={delChat}>
+      <div className="header_message_delete cursor_pointer" onClick={delChat}>
         <img src={trash} />
         <div className="header_message_delete_text">Удалить чат</div>
       </div>

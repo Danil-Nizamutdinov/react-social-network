@@ -41,7 +41,11 @@ const VideoInfo: React.FC<VideoProps> = ({ currentVideo }) => {
     <div className="video_content">
       <div className="video_title">
         {currentVideo.title}{" "}
-        <img src={expandArrow} onClick={() => setIsUpDown(!isUpDown)} />
+        <img
+          src={expandArrow}
+          className="cursor_pointer"
+          onClick={() => setIsUpDown(!isUpDown)}
+        />
       </div>
       <div className="video_subtitle">
         {convertToReadableDate(currentVideo.createdAt)}

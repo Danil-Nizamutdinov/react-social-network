@@ -16,6 +16,11 @@
   align-items: center;
 }
 
+.header_message {
+  position: absolute;
+  border-top: 2px solid #424242;
+}
+
 .header_content {
   display: flex;
   align-items: center;
@@ -33,18 +38,23 @@
 }
 
 .header_search {
+  position: relative;
   input {
     border: 0;
     width: 300px;
+    @media screen and (@mobile) {
+      width: 400px;
+    }
     height: 44px;
-    border-radius: 25px;
+    border-radius: 7px;
     background: #29333d;
     padding-left: 15px;
     padding-right: 45px;
   }
   img {
     position: absolute;
-    top: 15px;
-    right: 25px;
+    top: 8px;
+    right: 15px;
+    cursor: pointer;
   }
 }

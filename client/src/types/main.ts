@@ -27,6 +27,12 @@ export interface Video {
   video: string;
 }
 
+export interface VideoResponse {
+  videos: Video[];
+  page: number;
+  totalPages: number;
+}
+
 export interface commentReaction {
   contentId: number;
   createdAt: string;

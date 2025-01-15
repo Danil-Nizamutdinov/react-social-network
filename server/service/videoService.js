@@ -54,8 +54,11 @@ class VideoService {
     return { video, comments };
   }
   async getVideos(page, limit) {
-    page = page || 1;
-    limit = limit || 9;
+    const parsedPage = Number(page);
+    const parsedLimit = Number(limit);
+
+    page = parsedPage || 1;
+    limit = parsedLimit || 9;
 
     let offset = page * limit - limit;
 
@@ -63,7 +66,8 @@ class VideoService {
     let totalPages = Math.ceil(count / limit);
 
     const videos = await Video.findAll({ include: Channel, limit, offset });
-    return videos;
+
+    return { videos, page, totalPages };
   }
 }
 

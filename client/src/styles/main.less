@@ -45,6 +45,11 @@ img {
 .ava {
   width: 26px;
   height: 26px;
+  @media screen and (@mobile) {
+    width: 40px;
+    height: 40px;
+  }
+  cursor: pointer;
   border-radius: 50%;
 }
 
@@ -68,6 +73,7 @@ img {
   color: @color-blue;
   border-radius: 7px;
   font-size: 11px;
+  cursor: pointer;
 }
 
 .button_all_blue {
@@ -78,8 +84,27 @@ img {
   color: #fff;
   border-radius: 7px;
   font-size: 11px;
+  cursor: pointer;
 }
 
 .dislike {
   width: 22px;
+  cursor: pointer;
+}
+
+.like {
+  cursor: pointer;
+}
+
+.cursor_pointer {
+  cursor: pointer;
+}
+
+.appt_content {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+}
+
+.header_menu_box {
+  min-width: 242px;
 }

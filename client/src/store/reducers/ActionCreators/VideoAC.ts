@@ -11,14 +11,29 @@ import {
 } from "@src/types/main";
 
 export const getVideos = createAsyncThunk<
-  Video[],
-  void,
+  VideoResponse,
+  number,
   {
     rejectValue: KnownError;
   }
->("chat/getVideos", async (_, { rejectWithValue }) => {
+>("chat/getVideos", async (page, { rejectWithValue }) => {
   try {
-    const res = await VideoApi.getVideos();
+    const res = await VideoApi.getVideos(page);
+    return res.data;
+  } catch (e) {
+    return rejectWithValue(e.response.data.message);
+  }
+});
+
+export const getVideosNextPage = createAsyncThunk<
+  VideoResponse,
+  number,
+  {
+    rejectValue: KnownError;
+  }
+>("chat/getVideosNextPage", async (page, { rejectWithValue }) => {
+  try {
+    const res = await VideoApi.getVideos(page);
     return res.data;
   } catch (e) {
     return rejectWithValue(e.response.data.message);

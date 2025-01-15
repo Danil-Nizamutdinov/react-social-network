@@ -4,13 +4,18 @@ import React, { useEffect } from "react";
 import { getVideos } from "@src/store/reducers/ActionCreators/VideoAC";
 import { apiUrlStatic } from "@src/api";
 import { convertToReadableDate } from "@src/components/Helper/readableDate";
+import useWindowHeight from "@src/hooks/useWindowHeight";
 
 const VideoList: React.FC = () => {
   const video = useAppSelector((state) => state.videoSlice.video);
+  const page = useAppSelector((state) => state.videoSlice.page);
+  const totalPages = useAppSelector((state) => state.videoSlice.totalPages);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getVideos());
+    dispatch(getVideos(1));
   }, []);
+
+  useWindowHeight(page, totalPages);
 
   return (
     <section className="video_list container">
